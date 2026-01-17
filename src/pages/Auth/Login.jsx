@@ -9,7 +9,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { login } = useAuth();
+    const { login, loginWithGoogle } = useAuth();
     const { isDarkMode, toggleTheme } = useTheme();
     const navigate = useNavigate();
 
@@ -65,6 +65,24 @@ const Login = () => {
                             {error}
                         </div>
                     )}
+
+                    <button
+                        type="button"
+                        onClick={loginWithGoogle}
+                        className="w-full mb-6 flex items-center justify-center gap-3 bg-white dark:bg-gray-700 text-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors font-medium transform active:scale-[0.98]"
+                    >
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
+                        Continue with Google
+                    </button>
+
+                    <div className="relative mb-6">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                            <span className="px-2 bg-white dark:bg-gray-800 text-gray-500">Or continue with email</span>
+                        </div>
+                    </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
